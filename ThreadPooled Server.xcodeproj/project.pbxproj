@@ -34,7 +34,6 @@
 		9256F9631998401A0052DFE4 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		9256F9641998410B0052DFE4 /* queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = queue.cpp; sourceTree = "<group>"; };
 		92AF956219A3C49C000ED78D /* http_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_helpers.h; sourceTree = "<group>"; };
-		92D6FE6F19A290580029E908 /* first_song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = first_song.mp3; sourceTree = "<group>"; };
 		92FEED3D1999827C00889F40 /* RequestWorker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestWorker.h; sourceTree = "<group>"; };
 		92FEED3F19998B1000889F40 /* RequestWorker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RequestWorker.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +70,6 @@
 			children = (
 				9256F95A19983F2D0052DFE4 /* main.cpp */,
 				9256F95C19983F2D0052DFE4 /* P2P_Server.1 */,
-				92D6FE6F19A290580029E908 /* first_song.mp3 */,
 				9256F9631998401A0052DFE4 /* queue.h */,
 				9256F9641998410B0052DFE4 /* queue.cpp */,
 				92FEED3D1999827C00889F40 /* RequestWorker.h */,
@@ -81,8 +79,7 @@
 				924E61B119A3BB0C00B2F765 /* http_helpers.c */,
 				92AF956219A3C49C000ED78D /* http_helpers.h */,
 			);
-			name = "ThreadPooled Server";
-			path = "P2P Server";
+			path = "ThreadPooled Server";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
