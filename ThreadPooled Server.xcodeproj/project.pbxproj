@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9256F95B19983F2D0052DFE4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9256F95A19983F2D0052DFE4 /* main.cpp */; };
-		9256F95D19983F2D0052DFE4 /* P2P_Server.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9256F95C19983F2D0052DFE4 /* P2P_Server.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +17,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				9256F95D19983F2D0052DFE4 /* P2P_Server.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -30,7 +28,6 @@
 		924E61B119A3BB0C00B2F765 /* http_helpers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = http_helpers.c; sourceTree = "<group>"; };
 		9256F95719983F2D0052DFE4 /* ThreadPooled Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ThreadPooled Server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9256F95A19983F2D0052DFE4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		9256F95C19983F2D0052DFE4 /* P2P_Server.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = P2P_Server.1; sourceTree = "<group>"; };
 		9256F9631998401A0052DFE4 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		9256F9641998410B0052DFE4 /* queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = queue.cpp; sourceTree = "<group>"; };
 		92AF956219A3C49C000ED78D /* http_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_helpers.h; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				9256F95A19983F2D0052DFE4 /* main.cpp */,
-				9256F95C19983F2D0052DFE4 /* P2P_Server.1 */,
 				9256F9631998401A0052DFE4 /* queue.h */,
 				9256F9641998410B0052DFE4 /* queue.cpp */,
 				92FEED3D1999827C00889F40 /* RequestWorker.h */,
