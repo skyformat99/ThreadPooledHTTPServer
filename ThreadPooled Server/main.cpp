@@ -14,10 +14,10 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <vector>
-#include "queue.cpp"
-#include "queue.h"
 #include "RequestWorker.cpp"
 #include "RequestWorker.h"
+#include "TaskStore.cpp"
+#include "TaskStore.h"
 
 typedef std::vector<RequestWorker *> WorkerVector;
 
@@ -25,7 +25,7 @@ typedef std::vector<RequestWorker *> WorkerVector;
 bool server_on;
 const int BACKLOG = SOMAXCONN;
 
-Queue<int> taskQueue(-1);
+TaskStore task_store;
 
 int thread_count = 0;
 WorkerVector worker_pool;
@@ -35,6 +35,7 @@ pthread_mutex_t taskQueue_mutex;
 pthread_mutex_t worker_pool_mutex;
 
 // Method declarations
+void *thread_manager_start_routine(void *null_ptr);
 void *thread_manager_start_routine(void *null_ptr);
 void on_thread_birth();
 void on_thread_death();
@@ -122,7 +123,7 @@ int main(int argc, const char * argv[])
         
         int conn_fd = accept(server_socketfd, (struct sockaddr *) &their_addr, &addr_storage_size);
         if (conn_fd >= 0)
-            taskQueue.enqueue(conn_fd);
+            task_store.store_task(conn_fd);
         
         
     }
@@ -151,7 +152,7 @@ int main(int argc, const char * argv[])
 
 // Callback functions to be called on thread creation and deletion
 void on_thread_birth() {
-    printf("on_thread_birth() called\n"); // Doesn't do anything useful at the moment
+    //printf("on_thread_birth() called\n"); // Doesn't do anything useful at the moment
 }
 
 void on_thread_death(size_t thread_index) {
@@ -165,24 +166,22 @@ void on_thread_death(size_t thread_index) {
 void *thread_manager_start_routine(void *null_ptr) {
     
     while (server_on) {
-        if (num_threads_to_create(thread_count, taskQueue.getSize()) > 0) {
+        if (num_threads_to_create(thread_count, task_store.num_tasks()) > 0) {
             pthread_mutex_lock(&worker_pool_mutex);
-            taskQueue.lock_size(); // Will halt all handling of *pending* requests. Ongoing requests will continue though
-            size_t num_new_threads = num_threads_to_create(thread_count, taskQueue.getSize());
+            size_t num_new_threads = num_threads_to_create(thread_count, task_store.num_tasks());
             if (num_new_threads > 0) {
                 // Calculation may have changed so must recalculate to make sure. Important to make sure num_threads_to_create(...) is O(1) and *fast*
                 // Add threads to thread pool, which is represented as the vector worker_pool
                 size_t i;
                 for (i = 0; i < num_new_threads; i++) {
                     pthread_t *thread_id = (pthread_t *) malloc(sizeof(pthread_t));
-                    RequestWorker *worker = new RequestWorker(thread_count + i, thread_id, taskQueue, &server_on, on_thread_birth, on_thread_death);
+                    RequestWorker *worker = new RequestWorker(thread_count + i, thread_id, task_store, &server_on, on_thread_birth, on_thread_death);
                     worker_pool.push_back(worker);
                     pthread_create(thread_id, NULL, RequestWorker::work_request, worker);
                 }
                 
                 thread_count += num_new_threads;
             }
-            taskQueue.unlock_size();
             pthread_mutex_unlock(&worker_pool_mutex);
         }
     }
@@ -192,5 +191,9 @@ void *thread_manager_start_routine(void *null_ptr) {
 
 size_t num_threads_to_create(const int thread_pool_size, const int num_pending_requests) {
     return num_pending_requests < thread_pool_size ? 0 : num_pending_requests - thread_pool_size;
+}
+
+void *task_queue_manager_start_routine(void *null_ptr) {
+    
 }
 

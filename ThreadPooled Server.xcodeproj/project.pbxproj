@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9228585E19A526CF002E6AEE /* TaskStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9228585D19A526CF002E6AEE /* TaskStore.cpp */; };
 		9256F95B19983F2D0052DFE4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9256F95A19983F2D0052DFE4 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -25,11 +26,11 @@
 /* Begin PBXFileReference section */
 		92159131199D31740068398B /* HTTPTalker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPTalker.h; sourceTree = "<group>"; };
 		92159132199D35560068398B /* HTTPTalker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPTalker.cpp; sourceTree = "<group>"; };
+		9228585C19A52336002E6AEE /* TaskStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskStore.h; sourceTree = "<group>"; };
+		9228585D19A526CF002E6AEE /* TaskStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TaskStore.cpp; sourceTree = "<group>"; };
 		924E61B119A3BB0C00B2F765 /* http_helpers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = http_helpers.c; sourceTree = "<group>"; };
 		9256F95719983F2D0052DFE4 /* ThreadPooled Server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ThreadPooled Server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9256F95A19983F2D0052DFE4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		9256F9631998401A0052DFE4 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
-		9256F9641998410B0052DFE4 /* queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = queue.cpp; sourceTree = "<group>"; };
 		92AF956219A3C49C000ED78D /* http_helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = http_helpers.h; sourceTree = "<group>"; };
 		92FEED3D1999827C00889F40 /* RequestWorker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestWorker.h; sourceTree = "<group>"; };
 		92FEED3F19998B1000889F40 /* RequestWorker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RequestWorker.cpp; sourceTree = "<group>"; };
@@ -66,14 +67,14 @@
 			isa = PBXGroup;
 			children = (
 				9256F95A19983F2D0052DFE4 /* main.cpp */,
-				9256F9631998401A0052DFE4 /* queue.h */,
-				9256F9641998410B0052DFE4 /* queue.cpp */,
 				92FEED3D1999827C00889F40 /* RequestWorker.h */,
 				92FEED3F19998B1000889F40 /* RequestWorker.cpp */,
 				92159131199D31740068398B /* HTTPTalker.h */,
 				92159132199D35560068398B /* HTTPTalker.cpp */,
 				924E61B119A3BB0C00B2F765 /* http_helpers.c */,
 				92AF956219A3C49C000ED78D /* http_helpers.h */,
+				9228585C19A52336002E6AEE /* TaskStore.h */,
+				9228585D19A526CF002E6AEE /* TaskStore.cpp */,
 			);
 			path = "ThreadPooled Server";
 			sourceTree = "<group>";
@@ -129,6 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9228585E19A526CF002E6AEE /* TaskStore.cpp in Sources */,
 				9256F95B19983F2D0052DFE4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

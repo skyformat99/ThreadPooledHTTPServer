@@ -45,7 +45,7 @@ bool HTTPTalker::keep_alive() const {
  * Also responsible for setting this->content_length and this->to_keep_alive appropriately
  */
 void HTTPTalker::parse_header(char *header) {
-    printf("HTTPTalker::parse_header() %d{ message: \"%s\" }\n", 106, "called parse_header()");
+    //printf("HTTPTalker::parse_header() %d{ message: \"%s\" }\n", 106, "called parse_header()");
     
     // First, parse request line
     char *request_line_end = strstr(header, "\r\n");
@@ -104,11 +104,11 @@ void HTTPTalker::parse_header(char *header) {
     else
         this->to_keep_alive = false; // If Connection not given, set to_keep_alive to false by default
     
-    printf("HTTPTalker::parse_header() %d{ message: \"%s\" }\n", 158, "finished with parse_header()");
+    //printf("HTTPTalker::parse_header() %d{ message: \"%s\" }\n", 158, "finished with parse_header()");
 }
 
 bool HTTPTalker::receive_request() {
-    printf("HTTPTalker::receive_request() %d{ message: \"%s\" }\n", 162, "called receive_request()");
+    //printf("HTTPTalker::receive_request() %d{ message: \"%s\" }\n", 162, "called receive_request()");
     
     this->reset_values();
     
@@ -142,7 +142,7 @@ bool HTTPTalker::receive_request() {
     string content = header_end; // Points to start of body
     size_t bytes_to_read = this->content_length - content.length(); // (Total size of content) - (amount of content we already have)
     
-    while ( bytes_to_read > 0 ) {
+    while (bytes_to_read > 0) {
         bytes_read = read(this->connfd, buffer, buffer_size - 1);
         
         if (bytes_read < 0) {
@@ -165,7 +165,7 @@ string HTTPTalker::get_header_value(const string & key) {
 }
 
 bool HTTPTalker::send_response(void *response_content, size_t res_length, MIME_TYPES mime_type, int status_code) {
-    printf("HTTPTalker::send_response() 206: { message: \"%s\" }\n", "Called send_response");
+    //printf("HTTPTalker::send_response() 206: { message: \"%s\" }\n", "Called send_response");
     
     bool free_content = false;
     

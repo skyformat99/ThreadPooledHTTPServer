@@ -9,7 +9,7 @@
 #ifndef P2P_Server_RequestWorker_h
 #define P2P_Server_RequestWorker_h
 
-#include "queue.h"
+#include "TaskStore.h"
 #include <pthread.h>
 
 class RequestWorker {
@@ -18,7 +18,8 @@ public:
     
     // Public instance methods and c'tors
     
-    RequestWorker(size_t thread_index, pthread_t *thread, Queue<int> & taskQueue, bool * server_on, void (*thread_birth_cb) (), void (*thread_death_cb) (size_t));
+    RequestWorker(size_t thread_index, pthread_t *thread, TaskStore & task_store, bool * server_on, void (*thread_birth_cb) (), void (*thread_death_cb) (size_t));
+    
     ~RequestWorker();
     
     static void *work_request(void *request_worker_void);
@@ -39,7 +40,7 @@ private:
     void (*on_birth) ();
     void (*on_death) (size_t);
     
-    Queue<int> *taskQueue;
+    TaskStore *task_store;
     const bool *server_on;
     
 };
